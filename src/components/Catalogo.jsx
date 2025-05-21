@@ -56,19 +56,12 @@ export default function Catalogo() {
             <p><b>Descripción:</b> {modalAuto.descripcion}</p>
 
             <div className="galeria">
-  <img src={modalAuto.imagenes[imagenActual]} alt="Auto" />
-
-  <div className="galeria-indicadores">
-    {modalAuto.imagenes.map((_, index) => (
-      <span
-        key={index}
-        onClick={() => setImagenActual(index)}
-        className={`indicador ${imagenActual === index ? 'activo' : ''}`}
-      ></span>
-    ))}
-  </div>
-</div>
-
+              <img src={modalAuto.imagenes[imagenActual]} alt="Auto" />
+              <div className="galeria-controles">
+                <button onClick={() => setImagenActual(imagenActual === 0 ? modalAuto.imagenes.length - 1 : imagenActual - 1)}>⬅️</button>
+                <button onClick={() => setImagenActual((imagenActual + 1) % modalAuto.imagenes.length)}>➡️</button>
+              </div>
+            </div>
           </div>
         </div>
       )}
