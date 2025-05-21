@@ -1,0 +1,178 @@
+.catalogo {
+  padding: 60px 40px;
+  background-color: #f9f9f9;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.catalogo-titulo {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #222;
+}
+
+.grid-autos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card-auto {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.card-auto:hover {
+  transform: translateY(-5px);
+}
+
+.auto-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.auto-info {
+  padding: 20px;
+}
+
+.auto-info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.precio {
+  color: #007BFF;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.auto-detalles {
+  font-size: 14px;
+  color: #555;
+  display: flex;
+   gap: 5px;
+  margin-bottom: 15px;
+}
+
+.botones {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-detalle,
+.btn-whatsapp {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+}
+
+.btn-detalle {
+  background-color: #333;
+  color: white;
+}
+
+.btn-detalle:hover {
+  background-color: #555;
+}
+
+.btn-whatsapp {
+  background-color: #25D366;
+  color: white;
+}
+
+.btn-whatsapp:hover {
+  background-color: #1ebe5d;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 600px;
+  width: 90%;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: gray;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.galeria {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.galeria img {
+  max-width: 50%;
+  border-radius: 12px;
+}
+
+.galeria-controles {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.galeria-controles button {
+  background-color:white;
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+ 
+.galeria-indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.indicador {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicador.activo {
+  background-color: #333; /* o el color que uses como primario */
+}
