@@ -1,5 +1,4 @@
-/* src/style.css */
-body {
+ body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
@@ -76,4 +75,52 @@ footer {
 .header-container h1 {
   margin: 0;
   font-size: 2rem;  
+}
+
+.mensaje-centralizado {
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin: 2rem 0;
+  padding: 0 1rem;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+ @media (max-width: 1024px) {
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+ @media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+ @media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
 }

@@ -44,3 +44,17 @@
   color: #25d366;        
   cursor: pointer;
 }
+
+
+.contenedor-flex {
+  display: flex;
+  justify-content: center;  /* para centrar contenido horizontalmente */
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.autor p {
+  font-size: 14px;
+  color: #fff;
+  margin: 0;
+}

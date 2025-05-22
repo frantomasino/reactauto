@@ -1,19 +1,14 @@
 import React from 'react';
+import './footer.css';
 
-export default function FloatingButtons() {
+export default function Footer() {
   return (
-    <div className="floating-buttons">
-      <a href="https://wa.me/5491159456142" target="_blank" rel="noreferrer" className="btn-floating whatsapp" title="WhatsApp">
-        <i className="fab fa-whatsapp"></i>
-      </a>
-
-      <a href="https://www.instagram.com/ms.motorsquilmes/" target="_blank" rel="noreferrer" className="btn-floating instagram" title="Instagram">
-        <i className="fab fa-instagram"></i>
-      </a>
-      
-      <a href="https://www.tiktok.com/@msmotorsquilmes" target="_blank" rel="noreferrer" className="btn-floating tiktok" title="TikTok">
-        <i className="fab fa-tiktok"></i>
-      </a>
-    </div>
+    <footer className="footer" id="contacto">
+      <div className="contenedor-flex">
+        <div className="autor">
+          <p>© 2025 MS.motorsquilmes. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
   );
 }

@@ -1,211 +1,201 @@
+/* Estilo general */
 .catalogo {
-  padding: 60px 40px;
-  background-color: #f9f9f9;
+  padding: 60px 20px;
+  background-color: #f7f9fc;
   font-family: 'Segoe UI', sans-serif;
 }
 
 .catalogo-titulo {
-  font-size: 32px;
   text-align: center;
+  font-size: 2.2rem;
   margin-bottom: 40px;
-  color: #222;
+  color: #1e293b;
 }
 
+/* Grid de autos */
 .grid-autos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
+/* Card de auto */
 .card-auto {
-  background-color: #fff;
+  background: white;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-auto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);}
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+}
 
 .auto-img {
- width: 100%;
-  height: 200px;
+  width: 100%;
+  height: 180px;
   object-fit: cover;
 }
 
 .auto-info {
-  padding: 20px;
+  padding: 1.2rem;
 }
 
 .auto-info h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
 }
 
 .precio {
-  color: #666;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.auto-detalles {
-  font-size: 0.85rem;
   color: #999;
-  display: flex;
-  gap: 12px;
-  margin-bottom: 15px;
-  
+  margin-bottom: 0.8rem;
 }
 
+/* Detalles */
+.auto-detalles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+.auto-detalles span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Botones */
 .botones {
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .btn-detalle,
 .btn-whatsapp {
-  padding: 10px 16px;
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.9rem;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 10px;
+  text-align: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
   text-decoration: none;
-  text-align: center;
+  color: white;
 }
 
 .btn-detalle {
-  background-color: #333;
-  color: white;
+  background-color: #0f172a;
 }
 
 .btn-detalle:hover {
-  background-color: #555;
+  background-color: #1e293b;
 }
 
 .btn-whatsapp {
-  background-color: #25D366;
-  color: white;
+  background-color: #22c55e;
 }
 
 .btn-whatsapp:hover {
-  background-color: #1ebe5d;
+  background-color: #16a34a;
 }
 
-/* MODAL */
+/* Modal */
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .modal-content {
-  background-color: white;
-  border-radius: 20px;
-  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 95%;
   max-width: 600px;
-  width: 90%;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.modal-content p {
+  margin: 0.4rem 0;
+  color: #334155;
+  font-size: 0.95rem;
 }
 
 .modal-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 12px;
+  right: 12px;
+  background: none;
   border: none;
-  background: gray;
-  font-size: 20px;
+  font-size: 1.4rem;
   cursor: pointer;
+  color: #64748b;
 }
 
+/* Galería en el modal */
 .galeria {
-  text-align: center;
-  margin-top: 20px;
+  margin-top: 1.5rem;
+  position: relative;
+    aspect-ratio: 16 / 9; 
+
 }
 
 .galeria img {
-  max-width: 50%;
-  border-radius: 12px;
+  max-height: 280px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain; 
+  display: block;    
+  margin: 0 auto        
+       
 }
 
-.galeria-controles {
-  margin-top: 12px;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.galeria-controles button {
-  background-color:white;
-  border: none;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
- 
+/* Indicadores */
 .galeria-indicadores {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 0.8rem;
   gap: 8px;
 }
 
 .indicador {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #cbd5e1;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .indicador.activo {
-  background-color: #333;
+  background-color: #2563eb;
 }
-
-
-.galeria {
-  text-align: center;
-  margin-top: 20px;
-}
-
-.galeria img {
-  max-width: 50%;
+.badge-color {
+  background-color: #e2e8f0;
+  padding: 4px 10px;
   border-radius: 12px;
-  user-select: none; /* evita selección mientras deslizás */
-}
-
-.galeria-indicadores {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 8px;
-}
-
-.indicador {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #ccc;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.indicador.activo {
-  background-color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #1e293b;
 }

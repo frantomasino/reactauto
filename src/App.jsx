@@ -14,7 +14,9 @@ function App() {
         <h1>Bienvenido a MS.Motors</h1>
       </header>
 
-      <p>Compra segura, financiación personalizada y atención premium</p>
+      <p className="mensaje-centralizado">
+        Compra segura, financiación personalizada y atención premium
+      </p>
 
       <Catalogo />
       <Footer />

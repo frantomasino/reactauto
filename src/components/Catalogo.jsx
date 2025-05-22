@@ -1,136 +1,99 @@
-import React, { useState } from 'react';
-import autos from '../data/autos';
-import './catalogo.css';
+import React, { useEffect, useState } from 'react';
+import Papa from 'papaparse';
+import './Catalogo.css';
 
-export default function Catalogo() {
-  const [modalAuto, setModalAuto] = useState(null);
-  const [imagenActual, setImagenActual] = useState(0);
+const URL_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp2B4fu6Psr3lFjHImzLDo0Sxrs19xwqXS-Ds0dpgvjhy_hy38cpnH8_L2O5HYbNkBsWBi1G9vzP6v/pub?gid=0&single=true&output=csv';
 
-  // Estados para detectar swipe
-  const [touchStartX, setTouchStartX] = useState(null);
-  const [touchEndX, setTouchEndX] = useState(null);
+const Catalogo = () => {
+  const [autos, setAutos] = useState([]);
+  const [autoDetalle, setAutoDetalle] = useState(null);
 
-  const minSwipeDistance = 50; // distancia mínima para considerar swipe
+  const fetchAutos = () => {
+    fetch(URL_CSV)
+      .then(res => res.text())
+      .then(csvText => {
+      Papa.parse(csvText, {
+     header: true,
+     skipEmptyLines: true,
+     complete: (result) => {
+    const autosFiltrados = result.data.filter(auto => 
+      auto.Marca?.trim() && auto.Modelo?.trim()
+    );
+    setAutos(autosFiltrados);
+  },
+  error: (err) => {
+    console.error('Error al parsear CSV:', err);
+  },
+});
 
-  const abrirModal = (auto) => {
-    setModalAuto(auto);
-    setImagenActual(0);
+      })
+      .catch(err => console.error('Error al cargar autos:', err));
   };
 
-  const cerrarModal = () => setModalAuto(null);
-
-  // Manejadores touch para swipe
-  const onTouchStart = (e) => {
-    setTouchEndX(null); // resetear valor al iniciar
-    setTouchStartX(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e) => {
-    setTouchEndX(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (touchStartX === null || touchEndX === null) return;
-    const distance = touchStartX - touchEndX;
-    if (distance > minSwipeDistance) {
-      // swipe left -> siguiente imagen
-      setImagenActual((prev) => (prev + 1) % modalAuto.imagenes.length);
-    } else if (distance < -minSwipeDistance) {
-      // swipe right -> imagen anterior
-      setImagenActual((prev) => (prev === 0 ? modalAuto.imagenes.length - 1 : prev - 1));
-    }
-  };
+  useEffect(() => {
+    fetchAutos();
+    const interval = setInterval(fetchAutos, 60000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section id="catalogo" className="catalogo">
+    <section className="catalogo">
       <h2 className="catalogo-titulo">Catálogo de Autos</h2>
-
       <div className="grid-autos">
-        {autos.map((auto) => (
-          <article key={auto.id} className="card-auto">
-            <img
-              src={auto.imagenPrincipal}
-              alt={`${auto.marca} ${auto.modelo}`}
-              className="auto-img"
-            />
+        {autos.map((auto, index) => (
+          <div className="card-auto" key={index}>
+            <img src={auto.ImagenURL} alt={auto.Modelo} className="auto-img" />
             <div className="auto-info">
-              <h3>
-                {auto.marca} {auto.modelo} {auto.anio}
-              </h3>
-              <p className="precio">USD {auto.precio.toLocaleString()}</p>
+              <h3>{auto.Marca} {auto.Modelo}</h3>
+              <p className="precio">{auto.Precio}</p>
               <div className="auto-detalles">
-                <span>
-                  <i className="fas fa-gas-pump"></i> {auto.combustible || 'Nafta'}
-                </span>
-                <span>
-                  <i className="fas fa-tachometer-alt"></i>{' '}
-                  {auto.kilometraje ? auto.kilometraje.toLocaleString() + ' km' : 'Sin dato'}
-                </span>
-                <span>
-                  <i className="fas fa-cogs"></i> {auto.transmision}
-                </span>
+                <span><i className="fas fa-calendar-alt"></i> {auto.Año}</span>
+                <span className="badge-color"><i className="fas fa-palette"></i> {auto.Color}</span>
+                <span><i className="fas fa-gas-pump"></i> {auto.Combustible}</span>
+                <span><i className="fas fa-tachometer-alt"></i> {auto.Kilometraje}</span>
+                <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
               <div className="botones">
-                <button onClick={() => abrirModal(auto)} className="btn-detalle">
-                  Ver Detalles
+                <button className="btn-detalle" onClick={() => setAutoDetalle(auto)}>
+                  Ver Detalle
                 </button>
                 <a
-                  href={`https://wa.me/5491159456142?text=Hola! Estoy interesado en el auto ${auto.marca} ${auto.modelo}`}
+                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${auto.Marca}%20${auto.Modelo}`}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="btn-whatsapp"
                 >
                   WhatsApp
                 </a>
               </div>
             </div>
-          </article>
+          </div>
         ))}
       </div>
 
-      {modalAuto && (
-        <div className="modal" onClick={cerrarModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={cerrarModal}>
-              ✖
+      {autoDetalle && (
+        <div className="modal" onClick={() => setAutoDetalle(null)}>
+          <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setAutoDetalle(null)}>
+              &times;
             </button>
-            <h3>
-              {modalAuto.marca} {modalAuto.modelo} {modalAuto.anio}
-            </h3>
-            <p>
-              <b>Motor:</b> {modalAuto.motor}
-            </p>
-            <p>
-              <b>Puertas:</b> {modalAuto.puertas}
-            </p>
-            <p>
-              <b>Color:</b> {modalAuto.color}
-            </p>
-            <p>
-              <b>Descripción:</b> {modalAuto.descripcion}
-            </p>
-
-            <div
-              className="galeria"
-              onTouchStart={onTouchStart}
-              onTouchMove={onTouchMove}
-              onTouchEnd={onTouchEnd}
-            >
-              <img src={modalAuto.imagenes[imagenActual]} alt={`Auto imagen ${imagenActual + 1}`} />
-              <div className="galeria-indicadores">
-                {modalAuto.imagenes.map((_, index) => (
-                  <span
-                    key={index}
-                    className={`indicador ${index === imagenActual ? 'activo' : ''}`}
-                    onClick={() => setImagenActual(index)}
-                    aria-label={`Mostrar imagen ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
+            <h3>{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
+            <p><strong>Precio:</strong> {autoDetalle.Precio}</p>
+            <p><strong>Color:</strong> {autoDetalle.Color}</p>
+            <p><strong>Combustible:</strong> {autoDetalle.Combustible}</p>
+            <p><strong>Kilometraje:</strong> {autoDetalle.Kilometraje}</p>
+            <p><strong>Transmisión:</strong> {autoDetalle.Transmisión}</p>
+            <p><strong>Descripción:</strong> {autoDetalle.Descripción}</p>
+            <img
+              src={autoDetalle.ImagenURL}
+              alt={autoDetalle.Modelo}
+              style={{ width: '100%', borderRadius: '10px', marginTop: '10px' }}
+            />
           </div>
         </div>
       )}
     </section>
   );
-}
+};
+
+export default Catalogo;
