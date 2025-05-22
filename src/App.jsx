@@ -9,7 +9,7 @@ function App() {
     <div>
       <header className="header-container">
         <a href="/"> 
-          <img src="/img/logo-ms-motors.jpg" alt="Logo Empresa" />
+          <img src="/logo-ms-motors.jpg" alt="Logo Empresa" />
         </a>
         <h1>Bienvenido a MS.Motors</h1>
       </header>

@@ -48,7 +48,7 @@
 
 .contenedor-flex {
   display: flex;
-  justify-content: center;  /* para centrar contenido horizontalmente */
+  justify-content: center;  
   align-items: center;
   padding: 10px 20px;
 }
