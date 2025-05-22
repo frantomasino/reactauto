@@ -177,3 +177,35 @@
 .indicador.activo {
   background-color: #333;
 }
+
+
+.galeria {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.galeria img {
+  max-width: 50%;
+  border-radius: 12px;
+  user-select: none; /* evita selección mientras deslizás */
+}
+
+.galeria-indicadores {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 8px;
+}
+
+.indicador {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.indicador.activo {
+  background-color: #333;
+}

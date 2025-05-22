@@ -1,3 +1,4 @@
+import React from 'react';
 import Catalogo from './components/Catalogo';
 import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
@@ -8,9 +9,9 @@ function App() {
     <div>
       <header className="header-container">
         <a href="/"> 
-         <img src="/img/logo-ms-motors.jpg" alt="Logo Empresa" />
+          <img src="/img/logo-ms-motors.jpg" alt="Logo Empresa" />
         </a>
-        <h1>Bienvenido a MS.Motors</h1> {/*  dentro del header */}
+        <h1>Bienvenido a MS.Motors</h1>
       </header>
 
       <p>Compra segura, financiación personalizada y atención premium</p>
@@ -21,6 +22,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
