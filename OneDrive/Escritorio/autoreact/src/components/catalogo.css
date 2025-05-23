@@ -1,0 +1,262 @@
+ .catalogo {
+  padding: 60px 20px;
+  background-color: #f7f9fc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.catalogo-titulo {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #1e293b;
+}
+
+/* Grid  autos */
+.grid-autos {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Card auto */
+.card-auto {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-auto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.08);
+}
+
+.auto-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.auto-info {
+  padding: 1.2rem;
+}
+
+.auto-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #999;
+  margin-bottom: 0.8rem;
+}
+
+/* Detalles */
+.auto-detalles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #475569;
+}
+
+.auto-detalles span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Botones */
+.botones {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-detalle,
+.btn-whatsapp {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-detalle {
+  background-color: #0f172a;
+}
+
+.btn-detalle:hover {
+  background-color: #1e293b;
+}
+
+.btn-whatsapp {
+  background-color: #22c55e;
+}
+
+.btn-whatsapp:hover {
+  background-color: #16a34a;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 95%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.8rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #334155;
+  font-weight: 700;
+}
+
+.modal-close:hover {
+  color: #0f172a;
+}
+
+/*  imagen grande */
+.galeria {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.galeria img {
+  max-width: 100%;
+  max-height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  object-fit: contain;
+}
+
+/*   miniaturas */
+.galeria-imagenes {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.galeria-imagenes::-webkit-scrollbar {
+  height: 6px;
+}
+
+.galeria-imagenes::-webkit-scrollbar-thumb {
+  background-color: #94a3b8;
+  border-radius: 10px;
+}
+
+.img-galeria {
+  width: 70px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.7;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.img-galeria:hover {
+  opacity: 1;
+}
+
+.img-galeria.activo {
+  opacity: 1;
+  border-color: #0f172a;
+  box-shadow: 0 0 8px #0f172a;
+}
+ 
+.galeria-deslizante {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 1rem;
+  margin: 20px 0;
+}
+
+.imagen-grande {
+  max-width: 80%;
+  max-height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  object-fit: contain;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.btn-flecha {
+  background-color: rgba(15, 23, 42, 0.7);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-flecha:hover {
+  background-color: rgba(15, 23, 42, 0.9);
+}
+
+.btn-flecha.izquierda {
+  position: absolute;
+  left: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.btn-flecha.derecha {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
