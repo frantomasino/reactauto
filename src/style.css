@@ -1,15 +1,27 @@
 /* base */
-body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   font-family: Arial, sans-serif;
 }
 
-/*   root */
+/* root */
 #root {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -47,6 +59,9 @@ body {
   gap: 20px;
   margin: 2rem 0;
   padding: 0 1rem;
+  box-sizing: border-box;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .card {
@@ -55,13 +70,22 @@ body {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   padding: 1.5rem;
   transition: transform 0.3s ease;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .card:hover {
   transform: translateY(-4px);
 }
 
-/* Responsive cards   */
+/* Imagenes responsivas */
+.card img, img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive cards */
 @media (max-width: 1024px) {
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -77,6 +101,11 @@ body {
 @media (max-width: 480px) {
   .card-grid {
     grid-template-columns: 1fr;
+    padding: 0 0.5rem;
+  }
+
+  #root {
+    padding: 0 0.5rem;
   }
 }
 
@@ -133,15 +162,17 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
- .logo {
+.logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
