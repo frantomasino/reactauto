@@ -10,12 +10,10 @@ const Catalogo = () => {
   const [autoDetalle, setAutoDetalle] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-  // Para swipe
-  const touchStartX = useRef(null);
+   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
-  // Carga autos
-  const fetchAutos = () => {
+   const fetchAutos = () => {
     fetch(URL_CSV)
       .then(res => res.text())
       .then(csvText => {
@@ -50,8 +48,7 @@ const Catalogo = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Cambiar foto manualmente
-  const cambiarFoto = (index) => {
+   const cambiarFoto = (index) => {
     if (index < 0) {
       setPhotoIndex(autoDetalle.imagenes.length - 1);
     } else if (index >= autoDetalle.imagenes.length) {
@@ -61,8 +58,7 @@ const Catalogo = () => {
     }
   };
 
-  // Manejo de swipe
-  const handleTouchStart = (e) => {
+   const handleTouchStart = (e) => {
     touchStartX.current = e.changedTouches[0].clientX;
   };
 
@@ -73,18 +69,15 @@ const Catalogo = () => {
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const distancia = touchStartX.current - touchEndX.current;
-    const umbral = 50; // px para considerar swipe
+    const umbral = 50;  
 
     if (distancia > umbral) {
-      // swipe izquierda -> siguiente foto
-      cambiarFoto(photoIndex + 1);
+       cambiarFoto(photoIndex + 1);
     } else if (distancia < -umbral) {
-      // swipe derecha -> foto anterior
-      cambiarFoto(photoIndex - 1);
+       cambiarFoto(photoIndex - 1);
     }
 
-    // resetear
-    touchStartX.current = null;
+     touchStartX.current = null;
     touchEndX.current = null;
   };
 
