@@ -83,7 +83,7 @@ const Catalogo = () => {
 
   if (!autoDetalle) return (
     <section className="catalogo">
-      <h2 className="catalogo-titulo">Catálogo de Autos</h2>
+      <h2 className="catalogo-titulo">Catalogo de Autos</h2>
       <div className="grid-autos">
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
