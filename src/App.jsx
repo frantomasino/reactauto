@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import FloatingButtons from './components/FloatingButtons';
 import './style.css';
 
+
 function App() {
   return (
     <div>

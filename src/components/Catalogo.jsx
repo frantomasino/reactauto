@@ -10,10 +10,10 @@ const Catalogo = () => {
   const [autoDetalle, setAutoDetalle] = useState(null);
   const [photoIndex, setPhotoIndex] = useState(0);
 
-   const touchStartX = useRef(null);
+  const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
-   const fetchAutos = () => {
+  const fetchAutos = () => {
     fetch(URL_CSV)
       .then(res => res.text())
       .then(csvText => {
@@ -48,17 +48,12 @@ const Catalogo = () => {
     return () => clearInterval(interval);
   }, []);
 
-   const cambiarFoto = (index) => {
-    if (index < 0) {
-      setPhotoIndex(autoDetalle.imagenes.length - 1);
-    } else if (index >= autoDetalle.imagenes.length) {
-      setPhotoIndex(0);
-    } else {
-      setPhotoIndex(index);
-    }
+  const cambiarFoto = (index) => {
+    const total = autoDetalle.imagenes.length;
+    setPhotoIndex((index + total) % total);
   };
 
-   const handleTouchStart = (e) => {
+  const handleTouchStart = (e) => {
     touchStartX.current = e.changedTouches[0].clientX;
   };
 
@@ -69,21 +64,21 @@ const Catalogo = () => {
   const handleTouchEnd = () => {
     if (!touchStartX.current || !touchEndX.current) return;
     const distancia = touchStartX.current - touchEndX.current;
-    const umbral = 50;  
+    const umbral = 50;
 
     if (distancia > umbral) {
-       cambiarFoto(photoIndex + 1);
+      cambiarFoto(photoIndex + 1);
     } else if (distancia < -umbral) {
-       cambiarFoto(photoIndex - 1);
+      cambiarFoto(photoIndex - 1);
     }
 
-     touchStartX.current = null;
+    touchStartX.current = null;
     touchEndX.current = null;
   };
 
   if (!autoDetalle) return (
     <section className="catalogo">
-      <h2 className="catalogo-titulo">Catalogo de Autos</h2>
+      <h2 className="catalogo-titulo">Catálogo de Autos</h2>
       <div className="grid-autos">
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
@@ -102,25 +97,27 @@ const Catalogo = () => {
                 <span><i className="fas fa-tachometer-alt"></i> {auto.Kilometraje}</span>
                 <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
+
               <div className="botones">
-                <button
-                  className="btn-detalle"
-                  onClick={() => {
-                    setAutoDetalle(auto);
-                    setPhotoIndex(0);
-                  }}
-                >
-                  Ver Detalle
-                </button>
-                <a
-                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${auto.Marca}%20${auto.Modelo}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-whatsapp"
-                >
-                  WhatsApp
-                </a>
-              </div>
+  <button
+    className="btn-detalle"
+    onClick={() => {
+      setAutoDetalle(auto);
+      setPhotoIndex(0);
+    }}
+  >
+    Ver Detalle
+  </button>
+  <a
+    href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${auto.Marca}%20${auto.Modelo}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-whatsapp"
+  >
+    WhatsApp
+  </a>
+</div>
+
             </div>
           </div>
         ))}
@@ -133,44 +130,72 @@ const Catalogo = () => {
       <div className="modal" onClick={() => setAutoDetalle(null)}>
         <div
           className="modal-content"
-          onClick={e => e.stopPropagation()}
+          onClick={(e) => e.stopPropagation()}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <button className="modal-close" onClick={() => setAutoDetalle(null)}>&times;</button>
-          <h3>{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
-          <p><strong>Precio:</strong> {autoDetalle.Precio}</p>
-          <p><strong>Color:</strong> {autoDetalle.Color}</p>
-          <p><strong>Combustible:</strong> {autoDetalle.Combustible}</p>
-          <p><strong>Kilometraje:</strong> {autoDetalle.Kilometraje}</p>
-          <p><strong>Transmisión:</strong> {autoDetalle.Transmisión}</p>
-          <p><strong>Descripción:</strong> {autoDetalle.Descripción}</p>
+          <button className="modal-close" onClick={() => setAutoDetalle(null)}>
+            &times;
+          </button>
 
-          <div className="galeria-deslizante">
+          <div className="modal-body">
+            <div className="col-galeria">
+              <div className="galeria-deslizante">
+                <button
+                  className="btn-flecha izquierda"
+                  onClick={() => cambiarFoto(photoIndex - 1)}
+                >
+                  &lt;
+                </button>
 
-            <button className="btn-flecha izquierda" onClick={() => cambiarFoto(photoIndex - 1)}>&lt;</button>
+                <img
+                  src={autoDetalle.imagenes[photoIndex]}
+                  alt={`Foto ${photoIndex + 1}`}
+                  className="imagen-grande"
+                />
 
-            <img
-              src={autoDetalle.imagenes[photoIndex]}
-              alt={`Foto ${photoIndex + 1}`}
-              key={photoIndex}
-              className="imagen-grande"
-            />
+                <button
+                  className="btn-flecha derecha"
+                  onClick={() => cambiarFoto(photoIndex + 1)}
+                >
+                  &gt;
+                </button>
+              </div>
 
-            <button className="btn-flecha derecha" onClick={() => cambiarFoto(photoIndex + 1)}>&gt;</button>
-          </div>
+              <div className="galeria-imagenes">
+                {autoDetalle.imagenes.map((img, i) => (
+                  <img
+                    key={i}
+                    src={img}
+                    alt={`Miniatura ${i + 1}`}
+                    className={`img-galeria ${i === photoIndex ? "activo" : ""}`}
+                    onClick={() => cambiarFoto(i)}
+                  />
+                ))}
+              </div>
+            </div>
 
-          <div className="galeria-imagenes">
-            {autoDetalle.imagenes.map((img, i) => (
-              <img
-                key={i}
-                src={img}
-                alt={`Miniatura ${i + 1}`}
-                className={`img-galeria ${i === photoIndex ? 'activo' : ''}`}
-                onClick={() => cambiarFoto(i)}
-              />
-            ))}
+            <div className="col-info">
+              <h3>{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
+              <p><strong>Precio:</strong> {autoDetalle.Precio}</p>
+              <p><strong>Color:</strong> {autoDetalle.Color}</p>
+              <p><strong>Combustible:</strong> {autoDetalle.Combustible}</p>
+              <p><strong>Kilometraje:</strong> {autoDetalle.Kilometraje}</p>
+              <p><strong>Transmisión:</strong> {autoDetalle.Transmisión}</p>
+              <p className="descripcion"><strong>Descripción:</strong> {autoDetalle.Descripción}</p>
+
+              <div className="botones">
+                <a
+                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${autoDetalle.Marca}%20${autoDetalle.Modelo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp"
+                >
+                  Contactar por WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
