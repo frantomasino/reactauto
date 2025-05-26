@@ -98,27 +98,25 @@ const Catalogo = () => {
                 <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
 
- <div className="botones">
-  <button
-    className="btn-detalle"
-    onClick={() => {
-      setAutoDetalle(auto);
-      setPhotoIndex(0);
-    }}
-  >
-    Ver Detalle
-  </button>
-  <a
-    href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${auto.Marca}%20${auto.Modelo}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn-whatsapp"
-  >
-    WhatsApp
-  </a>
-</div>
-
-
+              <div className="botones">
+                <button
+                  className="btn-detalle"
+                  onClick={() => {
+                    setAutoDetalle(auto);
+                    setPhotoIndex(0);
+                  }}
+                >
+                  Ver Detalle
+                </button>
+                <a
+                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${auto.Marca}%20${auto.Modelo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp"
+                >
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -142,12 +140,11 @@ const Catalogo = () => {
 
           <div className="modal-body">
             <div className="col-galeria">
+              <h3 className="titulo-auto">{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
+
               <div className="galeria-deslizante">
-                <button
-                  className="btn-flecha izquierda"
-                  onClick={() => cambiarFoto(photoIndex - 1)}
-                >
-                  &lt;
+                <button className="btn-flecha izquierda" onClick={() => cambiarFoto(photoIndex - 1)}>
+                  <i className="fas fa-chevron-left"></i>
                 </button>
 
                 <img
@@ -156,11 +153,8 @@ const Catalogo = () => {
                   className="imagen-grande"
                 />
 
-                <button
-                  className="btn-flecha derecha"
-                  onClick={() => cambiarFoto(photoIndex + 1)}
-                >
-                  &gt;
+                <button className="btn-flecha derecha" onClick={() => cambiarFoto(photoIndex + 1)}>
+                  <i className="fas fa-chevron-right"></i>
                 </button>
               </div>
 
@@ -178,24 +172,23 @@ const Catalogo = () => {
             </div>
 
             <div className="col-info">
-              <h3>{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
               <p><strong>Precio:</strong> {autoDetalle.Precio}</p>
               <p><strong>Color:</strong> {autoDetalle.Color}</p>
               <p><strong>Combustible:</strong> {autoDetalle.Combustible}</p>
               <p><strong>Kilometraje:</strong> {autoDetalle.Kilometraje}</p>
               <p><strong>Transmisión:</strong> {autoDetalle.Transmisión}</p>
               <p className="descripcion"><strong>Descripción:</strong> {autoDetalle.Descripción}</p>
+<div className="botones">
+  <a
+    href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${autoDetalle.Marca}%20${autoDetalle.Modelo}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-whatsapp"
+  >
+    <i className="fab fa-whatsapp"></i> Contactar por WhatsApp
+  </a>
+</div>
 
-              <div className="botones">
-                <a
-                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${autoDetalle.Marca}%20${autoDetalle.Modelo}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-whatsapp"
-                >
-                  Contactar por WhatsApp
-                </a>
-              </div>
             </div>
           </div>
         </div>
