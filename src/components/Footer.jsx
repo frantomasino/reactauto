@@ -7,11 +7,12 @@ export default function Footer() {
       <div className="contenedor-flex">
         {/* Izquierda */}
         <div className="footer-left">
-          <div className="footer-logo">
-            <img src="/logo-ms-motors.jpg" alt="MS Motors Logo" />
-          </div>
-          <h3>MS.Motors</h3>
-          <p>Compra segura, financiación personalizada y atención premium para todos nuestros clientes.</p>
+          <div className="footer-brand">
+           <img src="/logo-ms-motors.jpg" alt="MS Motors Logo" className="footer-logo" />
+           <h3 className="footer-titulo">MS.<span className="rojo">Motors</span></h3>
+         </div>
+
+          <p> <span className="autor">Compra segura, financiación personalizada y atención premium para todos nuestros clientes.</span></p>
           <div className="footer-redes">
             <a href="https://wa.me/5491159456142" target="_blank" rel="noreferrer"><i className="fab fa-whatsapp"></i></a>
             <a href="https://www.instagram.com/ms.motorsquilmes/" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
