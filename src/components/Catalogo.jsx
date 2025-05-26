@@ -79,7 +79,7 @@ const Catalogo = () => {
   if (!autoDetalle) return (
     <section className="catalogo">
       <h2 className="catalogo-titulo">Catálogo de Autos</h2>
-      <div className="grid-autos">
+      <div className="cards-container">
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
             <img
@@ -93,7 +93,6 @@ const Catalogo = () => {
               <div className="auto-detalles">
                 <span><i className="fas fa-calendar-alt"></i> {auto.Año}</span>
                 <span className="badge-color"><i className="fas fa-palette"></i> {auto.Color}</span>
-                <span><i className="fas fa-gas-pump"></i> {auto.Combustible}</span>
                 <span><i className="fas fa-tachometer-alt"></i> {auto.Kilometraje}</span>
                 <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
@@ -178,17 +177,16 @@ const Catalogo = () => {
               <p><strong>Kilometraje:</strong> {autoDetalle.Kilometraje}</p>
               <p><strong>Transmisión:</strong> {autoDetalle.Transmisión}</p>
               <p className="descripcion"><strong>Descripción:</strong> {autoDetalle.Descripción}</p>
-<div className="botones">
-  <a
-    href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${autoDetalle.Marca}%20${autoDetalle.Modelo}`}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="btn-whatsapp"
-  >
-    <i className="fab fa-whatsapp"></i> Contactar por WhatsApp
-  </a>
-</div>
-
+              <div className="botones">
+                <a
+                  href={`https://wa.me/5491159456142?text=Hola,%20quiero%20más%20info%20del%20${autoDetalle.Marca}%20${autoDetalle.Modelo}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-whatsapp"
+                >
+                  <i className="fab fa-whatsapp"></i> Contactar por WhatsApp
+                </a>
+              </div>
             </div>
           </div>
         </div>
