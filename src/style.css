@@ -26,35 +26,37 @@ html, body {
 /* Header */
 .header-container {
   display: flex;
-  align-items: center;  
-  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
   padding: 10px 0;
   margin-top: 10px;
+  gap: 10px;
 }
 
 .header-container img {
   height: 80px;
-  margin-top: 10px;  
+  margin-top: 0px;  
 }
 
 .header-container h1 {
-  margin: 0;
-  font-size: 2rem;  
+   margin: 0;
+  font-size: 2rem;
 }
-
 /* Mensaje centrado */
 .mensaje-centralizado {
+  flex-grow: 1;
   text-align: center;
-  margin: 20px auto;
+  margin: 0;  
   font-size: 1.2rem;
   font-weight: 500;
   max-width: 600px;
 }
 
+
 /* Cards grid */
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin: 2rem 0;
   padding: 0 1rem;
@@ -77,43 +79,35 @@ html, body {
   transform: translateY(-4px);
 }
 
-/* Imagenes responsivas */
 .card img, img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Responsive cards */
-@media (max-width: 1024px) {
-  .card-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.card-content {
+  padding: 1rem;
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;  
 }
 
-@media (max-width: 768px) {
+
+
+/* Responsive: tablets */
+@media (max-width: 900px) {
   .card-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 480px) {
+/* Responsive: móviles */
+@media (max-width: 600px) {
   .card-grid {
     grid-template-columns: 1fr;
     padding: 0 0.5rem;
   }
-
-  #root {
-    padding: 0 0.5rem;
-  }
-}
-
-/* Footer */
-footer {
-  background-color: #222;
-  color: white;
-  padding: 1rem;
-  text-align: center;
 }
 
 /* Botones flotantes */
@@ -185,4 +179,19 @@ footer {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
+}
+
+
+.rojo{
+  color:red;
+}
+
+ .logo-marca {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.espacio-vacio {
+  width: 80px;  
 }

@@ -9,16 +9,19 @@ function App() {
   return (
     <div>
       <header className="header-container">
-        <a href="/"> 
-          <img src="/logo-ms-motors.jpg" alt="Logo Empresa" />
-        </a>
-        <h1>Bienvenido a MS.Motors</h1>
-      </header>
+  <div className="logo-marca">
+    <a href="/">
+      <img src="/logo-ms-motors.jpg" alt="Logo Empresa" />
+    </a>
+    <h1>MS.<span className="rojo">Motors</span></h1>
+  </div>
 
-      <p className="mensaje-centralizado">
-        Compra segura, financiación personalizada y atención premium
-      </p>
+  <p className="mensaje-centralizado">
+    Compra segura, financiación personalizada y atención premium
+  </p>
 
+  <div className="espacio-vacio"></div>
+</header>
       <Catalogo />
       <Footer />
       <FloatingButtons />
