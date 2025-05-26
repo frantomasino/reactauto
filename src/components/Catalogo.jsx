@@ -98,7 +98,7 @@ const Catalogo = () => {
                 <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
 
-              <div className="botones">
+ <div className="botones">
   <button
     className="btn-detalle"
     onClick={() => {
@@ -117,6 +117,7 @@ const Catalogo = () => {
     WhatsApp
   </a>
 </div>
+
 
             </div>
           </div>
