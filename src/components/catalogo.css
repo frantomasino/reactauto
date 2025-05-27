@@ -234,11 +234,14 @@
 
 .card-auto .auto-img {
   width: 100%;
-  height: 200px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 250px;          /* Tamaño fijo del contenedor */
+  object-fit: cover;      /* Recorta imagen pero sin deformar */
+  object-position: center;
+  display: block;
+  border-radius: 8px;
 }
+
+
 
 /* Info auto */
 .auto-info {

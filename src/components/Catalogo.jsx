@@ -83,10 +83,10 @@ const Catalogo = () => {
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
                <div
-  className="auto-img"
-  style={{ backgroundImage: `url(${auto.imagenes[0]})` }}
-  aria-label={`${auto.Marca} ${auto.Modelo}`}
-></div>
+                  className="auto-img"
+                  style={{ backgroundImage: `url(${auto.imagenes[0]})` }}
+                  aria-label={`${auto.Marca} ${auto.Modelo}`}
+               ></div>
 
             <div className="auto-info">
               <h3>{auto.Marca} {auto.Modelo}</h3>
