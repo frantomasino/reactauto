@@ -214,7 +214,7 @@
   box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
-  justify-items: start; /* fuerza el contenido a alinearse a la izquierda */
+  justify-items: start; 
 }
 
 .card-auto {
@@ -234,13 +234,13 @@
 
 .card-auto .auto-img {
   width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: contain;
-  display: block;
-  background-color: #f1f5f9;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Info del auto */
+/* Info auto */
 .auto-info {
   padding: 1rem;
   display: flex;

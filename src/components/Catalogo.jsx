@@ -82,11 +82,12 @@ const Catalogo = () => {
       <div className="cards-container">
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
-            <img
-              src={auto.imagenes[0]}
-              alt={`${auto.Marca} ${auto.Modelo}`}
-              className="auto-img"
-            />
+               <div
+  className="auto-img"
+  style={{ backgroundImage: `url(${auto.imagenes[0]})` }}
+  aria-label={`${auto.Marca} ${auto.Modelo}`}
+></div>
+
             <div className="auto-info">
               <h3>{auto.Marca} {auto.Modelo}</h3>
               <p className="precio">{auto.Precio}</p>
