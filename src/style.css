@@ -28,32 +28,30 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* permite que se acomode en varias líneas si hace falta */
   padding: 10px 15px;
+  margin-top: 10px;
   gap: 10px;
 }
 
-.logo-marca {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: nowrap;
-  max-width: 100%;
-  overflow: hidden;
-}
-
-.logo-marca img {
+.header-container img {
   height: 80px;
-  width: auto;
-  flex-shrink: 0;
+  margin-top: 0px;  
 }
 
 .header-container h1 {
   margin: 0;
   font-size: 2rem;
-  white-space: nowrap;
+}
+
+/* Logo y marca */
+.logo-marca {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: nowrap;
+  max-width: 100%;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .rojo {
@@ -110,35 +108,6 @@ html, body {
   justify-content: space-between;  
 }
 
-/* Responsive: tablets */
-@media (max-width: 900px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Responsive: móviles */
-@media (max-width: 600px) {
-  .header-container {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .logo-marca {
-    gap: 8px;
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .logo-marca img {
-    height: 50px;
-  }
-
-  .header-container h1 {
-    font-size: 1.5rem;
-  }
-}
-
 /* Botones flotantes */
 .floating-buttons {
   position: fixed;
@@ -184,7 +153,6 @@ html, body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo react (si usás vite o CRA con logo) */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -211,7 +179,37 @@ html, body {
   }
 }
 
-/* Espaciador opcional */
-.espacio-vacio {
-  width: 80px;  
+/* Responsive: tablets */
+@media (max-width: 900px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .logo-marca {
+    gap: 8px;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+
+  .header-container {
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 10px;
+  }
+
+  .header-container img {
+    height: 60px;
+  }
+
+  .header-container h1 {
+    font-size: 1.5rem;
+    white-space: nowrap; /* evita que el texto se rompa */
+  }
+
+  .mensaje-centralizado {
+    display: none; /* Opcional: ocultar mensaje central en móvil si ocupa mucho */
+  }
 }
