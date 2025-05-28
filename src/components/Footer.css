@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 20px; /* menos padding */
+  padding: 0.5rem;
   background-color: #111;
   color: #eee;
   flex-wrap: wrap;
