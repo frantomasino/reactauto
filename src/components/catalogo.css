@@ -1,4 +1,4 @@
-/* Variables base y tipografía */
+/* ======== BASE GENERAL ======== */
 .catalogo {
   font-family: 'Segoe UI', sans-serif;
 }
@@ -10,22 +10,22 @@
   font-weight: bold;
 }
 
-/* Cards grid */
+/* ======== GRID ======== */
 .cards-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   padding: 0 1rem;
-  box-sizing: border-box;
   max-width: 1200px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* Card estilos generales */
+/* ======== CARD DESKTOP ======== */
 .card-auto {
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 340px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
@@ -40,12 +40,12 @@
 
 .card-auto .auto-img {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
-/* Info */
+/* ======== INFO CONTENIDO ======== */
 .auto-info {
   padding: 0.8rem;
   display: flex;
@@ -74,6 +74,7 @@
   gap: 0.4rem 0.8rem;
   font-size: 0.8rem;
   color: #475569;
+  margin-bottom: 0.5rem;
 }
 
 .auto-detalles span {
@@ -88,11 +89,11 @@
   text-align: center;
 }
 
-/* Botones */
+/* ======== BOTONES ======== */
 .botones {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.6rem;
+  margin-top: auto;
 }
 
 .btn-detalle,
@@ -132,13 +133,14 @@
   background-color: #1ebe5d;
 }
 
-/* Responsive */
+/* ======== RESPONSIVE TABLET ======== */
 @media (max-width: 900px) {
   .cards-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
+/* ======== RESPONSIVE CELULAR ======== */
 @media (max-width: 600px) {
   .cards-container {
     display: flex;
@@ -151,18 +153,18 @@
     flex-direction: row;
     height: auto;
     width: 100%;
-    min-height: 130px;
+    min-height: 140px;
   }
 
   .card-auto .auto-img {
-    width: 40%;
+    width: 45%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px 0 0 8px;
   }
 
   .auto-info {
-    width: 60%;
+    width: 55%;
     padding: 0.8rem;
     display: flex;
     flex-direction: column;
@@ -188,6 +190,7 @@
   .botones {
     flex-direction: row;
     gap: 0.4rem;
+    margin-top: auto;
   }
 
   .btn-detalle,
