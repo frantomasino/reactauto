@@ -310,50 +310,65 @@
   }
 
   .card-auto .auto-img {
-    width: 45%;
-    height: 100%;
-    max-height: 160px;
+    width: 42%;
+    height: auto;
+    max-height: 140px;
     object-fit: cover;
     border-radius: 8px 0 0 8px;
   }
 
-  .auto-info {
-    width: 55%;
-    padding: 0.6rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+    .auto-info {
+    width: 58%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto auto auto;
+    gap: 4px 8px;
+    padding: 0.6rem 0.6rem;
+    align-items: center;
   }
 
   .auto-info h3 {
-    font-size: 1rem;
+    grid-column: 1 / 3;
+    font-size: 0.9rem;
+    font-weight: 600;
     margin: 0;
   }
 
   .auto-precio {
+    grid-column: 1 / 3;
     font-size: 0.85rem;
-    margin: 0.2rem 0 0.4rem 0;
+    font-weight: bold;
+    color: #0f172a;
+    margin: 0;
   }
 
   .auto-detalles {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem 0;
-    margin-bottom: 0.4rem;
+    grid-column: 1 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 0.8rem;
+    color: #475569;
+    gap: 4px 10px;
   }
 
-  .botones {
-    margin-top: 0.6rem;
-    gap: 0.4rem;
+   .botones {
+    grid-column: 1 / 3;
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
   }
 
   .btn-detalle,
   .btn-whatsapp {
-    font-size: 0.85rem;
-    height: 34px;
+    flex: 1;
+    height: 30px;
+    font-size: 0.78rem;
+    padding: 0 0.3rem;
   }
 
-  /* Modal responsive */
+
+  /* Modal */
   .modal-content {
     padding: 1rem;
     max-height: 95vh;
@@ -364,10 +379,11 @@
     gap: 1rem;
   }
 
-  .col-galeria,
+
+ .col-galeria,
   .col-info {
-    flex: unset;
     max-width: 100%;
+    flex: unset;
   }
 
   .col-info {
