@@ -417,48 +417,44 @@ a:focus {
 @media (max-width: 600px) {
   .card-auto {
     flex-direction: row;
-    align-items: flex-start;
-    gap: 1rem;
+    align-items: center;
     height: auto;
-    padding: 0.5rem;
   }
-
   .card-auto .auto-img {
     width: 45%;
-    height: 100px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 8px;
+    height: 110px;
+    border-radius: 8px 0 0 8px;
     flex-shrink: 0;
   }
 
-    .auto-info {
-    width: 55%;
+
+      .auto-info {
     padding: 0.8rem;
+    width: 55%;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-   .auto-info h3 {
+  .auto-info h3 {
     font-size: 1rem;
     margin-bottom: 0.3rem;
   }
 
- .auto-detalles {
-    font-size: 0.85rem;
+
+  .auto-detalles {
+    font-size: 0.8rem;
     gap: 0.3rem 0.6rem;
   }
 
    .botones {
-    flex-direction: row;
-    gap: 0.5rem;
     margin-top: 0.6rem;
+    flex-direction: row;
+    gap: 0.4rem;
   }
 
   .btn-detalle,
   .btn-whatsapp {
-    flex: 1;
     font-size: 0.8rem;
     height: 36px;
     padding: 0 0.5rem;
