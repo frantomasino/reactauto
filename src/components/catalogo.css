@@ -238,9 +238,10 @@
 }
 
 .auto-detalles span {
+width: 50%;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
+  font-size: 0.75rem;
 }
 
 .auto-detalles i {
@@ -336,8 +337,10 @@
   }
 
   .auto-detalles {
-    font-size: 0.75rem;
-    margin-bottom: 0.4rem;
+     display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0;
+  margin-bottom: 0.4rem;
   }
 
   .botones {
