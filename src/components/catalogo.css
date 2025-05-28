@@ -1,7 +1,9 @@
 /* Variables base y tipografía */
 .catalogo {
   font-family: 'Segoe UI', sans-serif;
+  padding: 3%;
 }
+
 
 .catalogo-titulo {
   max-width: 1200px;
@@ -222,16 +224,12 @@
 }
 
 .auto-precio {
-  grid-column: 1 / 3;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.85rem;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 700;
   color: #0f172a;
-  margin: 0;
-  white-space: nowrap;
+  margin-bottom: 0.5rem;
 }
+
 .auto-detalles {
   font-size: 0.9rem;
   color: #475569;
