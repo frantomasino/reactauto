@@ -202,6 +202,12 @@ html, body {
     flex-direction: row; /* horizontal */
     gap: 15px;
   }
+
+  .btn-floating {
+    width: 28px;       /* botones más pequeños */
+    height: 28px;
+    font-size: 12px;   /* íconos más pequeños */
+  }
 }
 
 .logo {
