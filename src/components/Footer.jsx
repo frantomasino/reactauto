@@ -24,7 +24,9 @@ export default function Footer() {
         <div className="footer-right">
           <h4>Contacto</h4>
           <p>Quilmes.Buenos Aires</p>
-          <p>+5491159456142</p>
+          <a href="tel:+5491159456142" className="footer-call">
+            +5491159456142
+          </a>
         </div>
       </div>
 

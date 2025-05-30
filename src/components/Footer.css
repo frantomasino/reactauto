@@ -129,3 +129,16 @@
 .footer-titulo .rojo {
   color: #e33e3e;
 }
+
+.footer-call {
+  margin: 3px 0;
+  color: #bbb;
+  font-weight: 400;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.footer-call:hover {
+  text-decoration: underline;
+  color: red; /*   color  para el hover */
+}
