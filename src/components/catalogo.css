@@ -50,6 +50,7 @@
   font-weight: 700;
   z-index: 10;
 }
+
 .modal-close:hover {
   color: #0f172a;
 }
@@ -90,6 +91,7 @@
   padding-bottom: 0.2rem;
   margin-bottom: 0.15rem;
 }
+
 .col-info p:last-child {
   border-bottom: none;
   margin-bottom: 0;
@@ -101,6 +103,7 @@
   position: relative;
   width: 100%;
 }
+
 .imagen-grande {
   width: 100%;
   max-height: 340px;
@@ -131,10 +134,12 @@
   padding: 0;
   transition: background 0.3s ease, transform 0.2s ease;
 }
+
 .btn-flecha:hover {
   background: #334155;
   transform: translateY(-50%) scale(1.1);
 }
+
 .btn-flecha.izquierda { left: 5px; }
 .btn-flecha.derecha { right: 5px; }
 
@@ -148,13 +153,16 @@
   scrollbar-width: thin;
   scrollbar-color: #0f172a transparent;
 }
+
 .galeria-imagenes::-webkit-scrollbar {
   height: 6px;
 }
+
 .galeria-imagenes::-webkit-scrollbar-thumb {
   background-color: #0f172a;
   border-radius: 3px;
 }
+
 .img-galeria {
   width: 60px;
   height: 45px;
@@ -166,6 +174,7 @@
   transition: all 0.3s ease;
   flex-shrink: 0;
 }
+
 .img-galeria.activo {
   opacity: 1;
   border-color: #0f172a;
@@ -195,7 +204,7 @@
 
 .card-auto:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .card-auto .auto-img {
@@ -221,23 +230,15 @@
   color: #1e293b;
 }
 
-/* Aquí agrego para que el precio mantenga el $ y USD juntos */
 .auto-precio {
-  display: inline-flex;      /* Cambiar a inline-flex para alinear $ y USD */
-  align-items: center;       /* Centrar verticalmente */
-  gap: 4px;                  /* Espacio entre símbolo y texto */
-  white-space: nowrap;       /* Evitar salto de línea */
-  font-size: 0.85rem;
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 1rem;
+  font-weight: 700;
   color: #0f172a;
-  margin: 0;
-  grid-column: 1 / 3;        /* que ocupe las 2 columnas del grid */
-}
-
-.auto-precio .simbolo-moneda,
-.auto-precio .unidad-moneda {
-  white-space: nowrap; /* evito que $ y USD se separen */
-  margin: 0 4px;
+  margin-bottom: 0.5rem;
 }
 
 .auto-detalles {
@@ -287,6 +288,7 @@
   color: #0f172a;
   border: 1px solid #cbd5e1;
 }
+
 .btn-detalle:hover {
   background: #e2e8f0;
   border-color: #94a3b8;
@@ -298,9 +300,11 @@
   font-weight: bold;
   gap: 8px;
 }
+
 .btn-whatsapp i {
   font-size: 18px;
 }
+
 .btn-whatsapp:hover {
   background-color: #1ebe5d;
 }
@@ -336,12 +340,17 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(5, auto);
     gap: 4px 8px;
-    padding: 0.6rem 1rem;
-    align-items: center;
-    justify-content: space-between;
+    padding: 1rem;
     flex: 1;
     overflow: hidden;
   }
+
+   .auto-info p {
+    width: 100%;
+    grid-column: 1 / 3;
+
+  }
+
 
   .auto-info h3 {
     grid-column: 1 / 3;
@@ -352,20 +361,14 @@
 
   .auto-precio {
     grid-column: 1 / 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
     font-size: 0.85rem;
     font-weight: bold;
     color: #0f172a;
     margin: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-  }
-
-  .auto-precio .simbolo-moneda,
-  .auto-precio .unidad-moneda {
-    white-space: nowrap;
-    margin: 0 4px;
   }
 
   .auto-detalles {
@@ -401,7 +404,6 @@
     padding: 0 0.3rem;
   }
 
-  /* Modal */
   .modal-content {
     padding: 1rem;
     max-height: 95vh;
@@ -412,23 +414,22 @@
     gap: 1rem;
   }
 
-  .col-galeria {
-    flex-basis: 100%;
-    max-height: 250px;
+  .col-galeria,
+  .col-info {
+    max-width: 100%;
+    flex: unset;
   }
 
   .col-info {
-    flex-basis: 100%;
-    max-width: 100%;
-    font-size: 0.9rem;
-  }
-
-  .galeria-deslizante {
-    width: 100%;
+    padding-right: 0;
   }
 
   .imagen-grande {
     max-height: 220px;
-    border-radius: 12px;
+  }
+
+  .img-galeria {
+    width: 50px;
+    height: 38px;
   }
 }
