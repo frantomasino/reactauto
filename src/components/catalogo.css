@@ -223,14 +223,15 @@
 
 /* Aquí agrego para que el precio mantenga el $ y USD juntos */
 .auto-precio {
-  font-size: 1rem;
-  font-weight: 700;
+  display: inline-flex;      /* Cambiar a inline-flex para alinear $ y USD */
+  align-items: center;       /* Centrar verticalmente */
+  gap: 4px;                  /* Espacio entre símbolo y texto */
+  white-space: nowrap;       /* Evitar salto de línea */
+  font-size: 0.85rem;
+  font-weight: bold;
   color: #0f172a;
-  margin-bottom: 0.5rem;
-  white-space: nowrap; /* evita salto de línea */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  margin: 0;
+  grid-column: 1 / 3;        /* que ocupe las 2 columnas del grid */
 }
 
 .auto-precio .simbolo-moneda,
