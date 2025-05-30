@@ -103,6 +103,7 @@ const Catalogo = () => {
                   onClick={() => {
                     setAutoDetalle(auto);
                     setPhotoIndex(0);
+                    document.body.classList.add("modal-abierto");  
                   }}
                 >
                   Ver Detalle
@@ -123,9 +124,14 @@ const Catalogo = () => {
     </section>
   );
 
+  const cerrarModal = () => {
+    setAutoDetalle(null);
+    document.body.classList.remove("modal-abierto");  
+  };
+
   return (
     <section className="catalogo">
-      <div className="modal" onClick={() => setAutoDetalle(null)}>
+      <div className="modal" onClick={cerrarModal}>
         <div
           className="modal-content"
           onClick={(e) => e.stopPropagation()}
@@ -133,7 +139,7 @@ const Catalogo = () => {
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          <button className="modal-close" onClick={() => setAutoDetalle(null)}>
+          <button className="modal-close" onClick={cerrarModal}>
             &times;
           </button>
 

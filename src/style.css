@@ -139,7 +139,7 @@ html, body {
   }
 }
 
-/* Estilo por defecto: floating (solo para desktop) */
+/* Estilo por defecto: floating   */
 .floating-buttons {
   position: fixed;
   bottom: 20px;
@@ -161,7 +161,7 @@ html, body {
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  font-size: 18px;  /* ícono más pequeño */
+  font-size: 18px;   
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -193,20 +193,20 @@ html, body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-/* --- Estilos responsive para móvil --- */
+/* ---  responsive --- */
 @media (max-width: 768px) {
   .floating-buttons {
-    bottom: auto; /* quito bottom */
-    top: 20px; /* lo pongo arriba */
+    bottom: auto;  
+    top: 20px;  
     right: 20px;
-    flex-direction: row; /* horizontal */
+    flex-direction: row; 
     gap: 15px;
   }
 
   .btn-floating {
-    width: 28px;       /* botones más pequeños */
+    width: 28px;       
     height: 28px;
-    font-size: 12px;   /* íconos más pequeños */
+    font-size: 12px;   
   }
 }
 
@@ -238,4 +238,9 @@ html, body {
 
 .espacio-vacio {
   width: 80px;  
+}
+
+
+body.modal-abierto .floating-buttons {
+  display: none !important;
 }
