@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import Papa from 'papaparse';
 import './catalogo.css';
 import './Footer.css';
+import { storage } from '../firebaseConfig';
+import { ref, listAll, getDownloadURL } from 'firebase/storage';
 
 const URL_CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRp2B4fu6Psr3lFjHImzLDo0Sxrs19xwqXS-Ds0dpgvjhy_hy38cpnH8_L2O5HYbNkBsWBi1G9vzP6v/pub?gid=0&single=true&output=csv';
 
@@ -13,6 +15,18 @@ const Catalogo = () => {
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
+  const fetchImagenesAuto = async (carpeta) => {
+    try {
+      const carpetaRef = ref(storage, carpeta);
+      const lista = await listAll(carpetaRef);
+      const urls = await Promise.all(lista.items.map(item => getDownloadURL(item)));
+      return urls;
+    } catch (error) {
+      console.error(`Error cargando imágenes de ${carpeta}:`, error);
+      return [];
+    }
+  };
+
   const fetchAutos = () => {
     fetch(URL_CSV)
       .then(res => res.text())
@@ -20,21 +34,17 @@ const Catalogo = () => {
         Papa.parse(csvText, {
           header: true,
           skipEmptyLines: true,
-          complete: (result) => {
-            const autosFiltrados = result.data
-              .filter(auto => auto.Marca?.trim() && auto.Modelo?.trim())
-              .map(auto => ({
-                ...auto,
-                imagenes: [
-                  auto.ImagenURL || '',
-                  auto.ImagenURL1 || '',
-                  auto.ImagenURL2 || '',
-                  auto.ImagenURL3 || '',
-                  auto.ImagenURL4 || '',
-                  auto.ImagenURL5 || '',
-                ].filter(url => url.trim() !== '')
-              }));
-            setAutos(autosFiltrados);
+          complete: async (result) => {
+            const autosConImagenes = await Promise.all(result.data.map(async (auto) => {
+              if (!auto.Marca?.trim() || !auto.Modelo?.trim()) return null;
+
+              const carpeta = auto.CarpetaFirebase?.trim();
+              const imagenes = carpeta ? await fetchImagenesAuto(carpeta) : [];
+
+              return { ...auto, imagenes };
+            }));
+
+            setAutos(autosConImagenes.filter(Boolean));
           },
           error: (err) => console.error('Error al parsear CSV:', err),
         });
@@ -76,6 +86,11 @@ const Catalogo = () => {
     touchEndX.current = null;
   };
 
+  const cerrarModal = () => {
+    setAutoDetalle(null);
+    document.body.classList.remove("modal-abierto");
+  };
+
   if (!autoDetalle) return (
     <section className="catalogo">
       <h2 className="catalogo-titulo">Catálogo de Autos</h2>
@@ -83,7 +98,7 @@ const Catalogo = () => {
         {autos.map((auto, index) => (
           <div className="card-auto" key={index}>
             <img
-              src={auto.imagenes[0]}
+              src={auto.imagenes?.[0]}
               alt={`${auto.Marca} ${auto.Modelo}`}
               className="auto-img"
             />
@@ -96,14 +111,13 @@ const Catalogo = () => {
                 <span><i className="fas fa-tachometer-alt"></i> {auto.Kilometraje}</span>
                 <span><i className="fas fa-cogs"></i> {auto.Transmisión}</span>
               </div>
-
               <div className="botones">
                 <button
                   className="btn-detalle"
                   onClick={() => {
                     setAutoDetalle(auto);
                     setPhotoIndex(0);
-                    document.body.classList.add("modal-abierto");  
+                    document.body.classList.add("modal-abierto");
                   }}
                 >
                   Ver Detalle
@@ -124,11 +138,6 @@ const Catalogo = () => {
     </section>
   );
 
-  const cerrarModal = () => {
-    setAutoDetalle(null);
-    document.body.classList.remove("modal-abierto");  
-  };
-
   return (
     <section className="catalogo">
       <div className="modal" onClick={cerrarModal}>
@@ -142,27 +151,22 @@ const Catalogo = () => {
           <button className="modal-close" onClick={cerrarModal}>
             &times;
           </button>
-
           <div className="modal-body">
             <div className="col-galeria">
               <h3 className="titulo-auto">{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
-
               <div className="galeria-deslizante">
                 <button className="btn-flecha izquierda" onClick={() => cambiarFoto(photoIndex - 1)}>
                   <i className="fas fa-chevron-left"></i>
                 </button>
-
                 <img
                   src={autoDetalle.imagenes[photoIndex]}
                   alt={`Foto ${photoIndex + 1}`}
                   className="imagen-grande"
                 />
-
                 <button className="btn-flecha derecha" onClick={() => cambiarFoto(photoIndex + 1)}>
                   <i className="fas fa-chevron-right"></i>
                 </button>
               </div>
-
               <div className="galeria-imagenes">
                 {autoDetalle.imagenes.map((img, i) => (
                   <img
@@ -175,7 +179,6 @@ const Catalogo = () => {
                 ))}
               </div>
             </div>
-
             <div className="col-info">
               <p><strong>Precio:</strong> {autoDetalle.Precio}</p>
               <p><strong>Color:</strong> {autoDetalle.Color}</p>

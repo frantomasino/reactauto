@@ -60,7 +60,7 @@ html, body {
   color: red;
 }
 
-/* Mensaje centrado */
+/*   centrado */
 .mensaje-centralizado {
   flex-grow: 1;
   text-align: center;
@@ -139,7 +139,7 @@ html, body {
   }
 }
 
-/* Estilo por defecto: floating   */
+/*  floating   */
 .floating-buttons {
   position: fixed;
   bottom: 20px;
@@ -150,7 +150,7 @@ html, body {
   z-index: 9999;
 }
 
-/* Estilo para los botones */
+/*  s botones */
 .btn-floating {
   width: 36px;
   height: 36px;
