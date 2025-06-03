@@ -441,14 +441,11 @@
   }
 
   .catalogo-titulo {
-    max-width: 1200px;
-  margin-bottom: 2rem;
    margin: 0 0 1.5rem 0;  
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: #c00000;
   text-align: left;     
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 0.3rem;
- }  
+  }  
 }
