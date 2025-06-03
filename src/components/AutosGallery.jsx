@@ -1,4 +1,3 @@
-// src/components/AutosGallery.jsx
 import React, { useEffect, useState } from "react";
 import { ref, listAll, getDownloadURL } from "firebase/storage";
 import { storage } from "../firebaseConfig";

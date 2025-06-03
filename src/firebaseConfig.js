@@ -1,10 +1,9 @@
-// src/firebaseConfig.js
-import { initializeApp } from "firebase/app";
+ import { initializeApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDM8QXWKP0OpuToEWE-ZHcC8bpRh9SgCmk",
-  authDomain: "ecommerce-reactjs-350aa.firebaseapp.com",
+  authDomain: "commerce-reactjs-350aa.firebaseapp.com",
   projectId: "ecommerce-reactjs-350aa",
   storageBucket: "ecommerce-reactjs-350aa.appspot.com",
   messagingSenderId: "904207875955",

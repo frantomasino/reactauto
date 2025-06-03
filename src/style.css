@@ -25,13 +25,24 @@ html, body {
 
 /* Header */
 .header-container {
+  background-color: #111; 
+  color: #f9f9f9;         
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   gap: 10px;
+  border-bottom: 3px solid #c00000;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+.header-container h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #c00000;  
+}
+
 
 .logo-marca {
   display: flex;
@@ -48,14 +59,7 @@ html, body {
   flex-shrink: 0;
 }
 
-.header-container h1 {
-  margin: 0;
-  font-size: 2rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
+ 
 .rojo {
   color: red;
 }
