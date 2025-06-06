@@ -191,7 +191,7 @@
 /* Cards */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Cambiado a 4 columnas para desktop */
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
@@ -216,11 +216,12 @@
 }
 
 .card-auto .auto-img {
-  width: 100% !important;
-  height: 200px !important;
-  object-fit: cover !important;
-  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  user-select: none;
 }
+
 /* Info */
 .auto-info {
   padding: 1rem;
@@ -427,15 +428,29 @@
 
   .col-galeria,
   .col-info {
-    flex-basis: 100%;
     max-width: 100%;
+    flex: unset;
+  }
+
+  .col-info {
+    padding-right: 0;
   }
 
   .imagen-grande {
     max-height: 220px;
   }
 
-  .galeria-imagenes {
-    margin-top: 6px;
+  .img-galeria {
+    width: 50px;
+    height: 38px;
   }
+
+  .catalogo-titulo {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #c00000;
+    text-align: left;     
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 5px 5px 5px 10px;
+  }  
 }
