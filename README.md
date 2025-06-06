@@ -14,3 +14,31 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ## npm run dev 
 para levantarlo
+
+## fotos firebase 
+subir fotos en computudora
+
+abrir firebase ir al storage y en  carpeta AUTOS- crear SUBCARPETA del nuevo producto 
+
+ejemplo: marca-modelo
+ 
+ una vez creado subir todas las fotos y videos que quieras 
+
+ ## ADVERTENCIA: 
+
+ LAS FOTOS Y VIDEOS TIENEN QUE ESTAR SUBIDADS ASI 
+
+VIDEO.1
+VIDEO.2
+ETC
+
+MARCA-1            
+MARCA-2 
+ETC 
+
+
+UNA VEZ QUE SE SUBIO COPIAR EL NOMBRE DE LA CARPETA Y SUB CARPETA EN EL DRIVE QUE TENEMOS 
+
+SE COPIA ASI 
+
+AUTOS-MARCA-MODELO = UNA VEZ COPIADO Y PEGADO EN EL DRIVE SECCION CARPETA FIREBASE LO LEVANTA AUTOMATICAMENTE 
