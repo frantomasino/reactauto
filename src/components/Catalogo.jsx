@@ -15,6 +15,11 @@ const Catalogo = () => {
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
 
+  // Función para detectar si una URL es video según extensión
+  const esVideo = (url) => {
+    return url.match(/\.(mp4|webm|mov)$/i);
+  };
+
   const fetchImagenesAuto = async (carpeta) => {
     try {
       const carpetaRef = ref(storage, carpeta);
@@ -158,24 +163,49 @@ const Catalogo = () => {
                 <button className="btn-flecha izquierda" onClick={() => cambiarFoto(photoIndex - 1)}>
                   <i className="fas fa-chevron-left"></i>
                 </button>
-                <img
-                  src={autoDetalle.imagenes[photoIndex]}
-                  alt={`Foto ${photoIndex + 1}`}
-                  className="imagen-grande"
-                />
+
+                {esVideo(autoDetalle.imagenes[photoIndex]) ? (
+                  <video
+                    src={autoDetalle.imagenes[photoIndex]}
+                    className="imagen-grande"
+                    controls
+                    autoPlay
+                    loop
+                    muted
+                  />
+                ) : (
+                  <img
+                    src={autoDetalle.imagenes[photoIndex]}
+                    alt={`Foto ${photoIndex + 1}`}
+                    className="imagen-grande"
+                  />
+                )}
+
                 <button className="btn-flecha derecha" onClick={() => cambiarFoto(photoIndex + 1)}>
                   <i className="fas fa-chevron-right"></i>
                 </button>
               </div>
               <div className="galeria-imagenes">
-                {autoDetalle.imagenes.map((img, i) => (
-                  <img
-                    key={i}
-                    src={img}
-                    alt={`Miniatura ${i + 1}`}
-                    className={`img-galeria ${i === photoIndex ? "activo" : ""}`}
-                    onClick={() => cambiarFoto(i)}
-                  />
+                {autoDetalle.imagenes.map((url, i) => (
+                  esVideo(url) ? (
+                    <video
+                      key={i}
+                      src={url}
+                      className={`img-galeria ${i === photoIndex ? "activo" : ""}`}
+                      muted
+                      onClick={() => cambiarFoto(i)}
+                      preload="metadata"
+                      style={{ cursor: 'pointer' }}
+                    />
+                  ) : (
+                    <img
+                      key={i}
+                      src={url}
+                      alt={`Miniatura ${i + 1}`}
+                      className={`img-galeria ${i === photoIndex ? "activo" : ""}`}
+                      onClick={() => cambiarFoto(i)}
+                    />
+                  )
                 ))}
               </div>
             </div>

@@ -25,7 +25,7 @@ html, body {
 
 /* Header */
 .header-container {
-  background-color: #111; 
+  background-color:  #111; 
   color: #f9f9f9;         
   display: flex;
   align-items: center;
@@ -56,13 +56,15 @@ html, body {
   height: 80px;
   width: auto;
   flex-shrink: 0;
+   height: 60px;
+  object-fit: contain;
 }
 
+ /* Estilo rojo del título */
+.header-container .rojo {
+  color: #c00000;
+}
  
-.rojo {
-  color: red;
-}
-
 /*   centrado */
 .mensaje-centralizado {
   flex-grow: 1;
