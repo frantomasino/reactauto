@@ -13,7 +13,7 @@
   text-align: left;     
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   letter-spacing: 0.05em;
-   padding-bottom: 0.3rem;
+  padding-bottom: 0.3rem;
   line-height: 1.2;
 }
 
@@ -191,7 +191,7 @@
 /* Cards */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* Cambiado a 4 columnas para desktop */
   gap: 1.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
@@ -207,6 +207,7 @@
   overflow: hidden;
   height: 400px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-auto:hover {
@@ -215,11 +216,11 @@
 }
 
 .card-auto .auto-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  display: block;
 }
-
 /* Info */
 .auto-info {
   padding: 1rem;
@@ -316,6 +317,11 @@
   background-color: #1ebe5d;
 }
 
+/* Ocultar botones flotantes cuando el modal está abierto */
+.modal-abierto .floating-buttons {
+  display: none !important;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .cards-container {
@@ -352,12 +358,10 @@
     overflow: hidden;
   }
 
-   .auto-info p {
+  .auto-info p {
     width: 100%;
     grid-column: 1 / 3;
-
   }
-
 
   .auto-info h3 {
     grid-column: 1 / 3;
@@ -423,30 +427,15 @@
 
   .col-galeria,
   .col-info {
+    flex-basis: 100%;
     max-width: 100%;
-    flex: unset;
-  }
-
-  .col-info {
-    padding-right: 0;
   }
 
   .imagen-grande {
     max-height: 220px;
   }
 
-  .img-galeria {
-    width: 50px;
-    height: 38px;
+  .galeria-imagenes {
+    margin-top: 6px;
   }
-
-  .catalogo-titulo {
-   font-size: 1.4rem;
-  font-weight: 500;
-  color: #c00000;
-  text-align: left;     
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 5px 5px 5px 10px;
-  }  
 }
-
