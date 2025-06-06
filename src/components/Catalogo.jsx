@@ -19,7 +19,12 @@ const Catalogo = () => {
       const carpetaRef = ref(storage, carpeta);
       const lista = await listAll(carpetaRef);
       const urls = await Promise.all(lista.items.map(item => getDownloadURL(item)));
-      return urls;
+
+      // Reordenar: primero imágenes, luego videos
+      const imagenes = urls.filter(url => !url.includes('.mp4') && !url.includes('video'));
+      const videos = urls.filter(url => url.includes('.mp4') || url.includes('video'));
+
+      return [...imagenes, ...videos];
     } catch (error) {
       console.error(`Error cargando imágenes de ${carpeta}:`, error);
       return [];
