@@ -89,11 +89,13 @@ const Catalogo = () => {
 
   if (!autoDetalle) {
     return (
-      <section className="catalogo">
-        <h2 className="catalogo-titulo">Catálogo de Autos</h2>
-        <div className="cards-container">
-          {autos.map((auto, index) => (
-            <div className="card-auto" key={index}>
+     <section className="catalogo">
+  <h2 className="catalogo-titulo">Catálogo de Autos</h2>
+  <p className="catalogo-subtitulo">{autos.length} vehículos encontrados</p>
+  <div className="cards-container">
+    {autos.map((auto, index) => (
+      <div className="card-auto" key={index}>
+
               <img
                 src={auto.imagenes?.[0]}
                 alt={`${auto.Marca} ${auto.Modelo}`}
