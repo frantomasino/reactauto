@@ -42,6 +42,7 @@ text-align: left;
   background: #fff;
   border-radius: 16px;
   padding: 1.5rem;
+  padding-top: 0.5rem; /* espacio arriba */ 
   width: 90%;
   max-width: 800px;
   display: flex;
@@ -78,7 +79,7 @@ text-align: left;
   gap: 1rem;
   flex-wrap: nowrap;
   overflow: hidden;
-  align-items: stretch; /* 🔧 fuerza misma altura */
+  align-items: center; /* centrado vertical de los hijos */
 }
 
 /* Columnas */
@@ -96,6 +97,9 @@ text-align: left;
 }
 
 .col-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrado vertical */
   flex-basis: 45%;
   font-size: 0.95rem;
   color: #1e293b;
@@ -104,10 +108,11 @@ text-align: left;
   padding-right: 1.6rem;
 }
 
+
 .col-info p {
   border-bottom: 1px solid #e5e7eb;
-  padding-bottom: 1.6rem;
-  margin-bottom: 0.15rem;
+  padding-bottom: 1rem;
+  margin-bottom: 0.05rem;
 }
 
 /* Galería principal */
@@ -466,4 +471,11 @@ text-align: left;
     font-size: 16px;
     text-align: left;
   }
+}
+
+
+
+
+.titulo-auto{
+margin-bottom: 10px;
 }
