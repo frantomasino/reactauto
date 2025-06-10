@@ -334,6 +334,7 @@ text-align: left;
   display: none !important;
 }
 
+
 /* Responsive */
 @media (max-width: 600px) {
   .cards-container {
@@ -473,9 +474,7 @@ text-align: left;
   }
 }
 
-
-
-
 .titulo-auto{
-margin-bottom: 10px;
+  margin-bottom: 10px;
+  padding-top: 0.5rem; /* espacio arriba */
 }
