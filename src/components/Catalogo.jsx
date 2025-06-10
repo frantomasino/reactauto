@@ -20,7 +20,7 @@ const Catalogo = () => {
       const lista = await listAll(carpetaRef);
       const urls = await Promise.all(lista.items.map(item => getDownloadURL(item)));
 
-      // Reordenar: primero imágenes, luego videos
+      // Separar imágenes y videos
       const imagenes = urls.filter(url => !url.includes('.mp4') && !url.includes('video'));
       const videos = urls.filter(url => url.includes('.mp4') || url.includes('video'));
 
@@ -55,7 +55,7 @@ const Catalogo = () => {
 
   useEffect(() => {
     fetchAutos();
-    const interval = setInterval(fetchAutos, 60000);
+    const interval = setInterval(fetchAutos, 60000); // refrescar cada 1 minuto
     return () => clearInterval(interval);
   }, []);
 
@@ -73,7 +73,7 @@ const Catalogo = () => {
   };
 
   const handleTouchEnd = () => {
-    if (!touchStartX.current || !touchEndX.current) return;
+    if (touchStartX.current === null || touchEndX.current === null) return;
     const distancia = touchStartX.current - touchEndX.current;
     const umbral = 50;
     if (distancia > umbral) cambiarFoto(photoIndex + 1);
@@ -89,13 +89,12 @@ const Catalogo = () => {
 
   if (!autoDetalle) {
     return (
-     <section className="catalogo">
-  <h2 className="catalogo-titulo">Catálogo de Autos</h2>
-  <p className="catalogo-subtitulo">{autos.length} vehículos encontrados</p>
-  <div className="cards-container">
-    {autos.map((auto, index) => (
-      <div className="card-auto" key={index}>
-
+      <section className="catalogo" id="catalogo">
+        <h2 className="catalogo-titulo">Catálogo de Autos</h2>
+        <p className="catalogo-subtitulo">{autos.length} vehículos encontrados</p>
+        <div className="cards-container">
+          {autos.map((auto, index) => (
+            <div className="card-auto" key={index}>
               <img
                 src={auto.imagenes?.[0]}
                 alt={`${auto.Marca} ${auto.Modelo}`}
