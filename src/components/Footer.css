@@ -14,11 +14,10 @@
   justify-content: space-between;
   flex-wrap: nowrap;
   width: 100%;
-  max-width: 1200px;  
-  margin: 0 auto;
-  padding: 1.5rem 3rem;  
+  padding: 1.5rem 1rem; 
   gap: 40px;
 }
+
 
 .footer-left, .footer-right {
   flex-grow: 1;

@@ -20,7 +20,6 @@ const Catalogo = () => {
       const lista = await listAll(carpetaRef);
       const urls = await Promise.all(lista.items.map(item => getDownloadURL(item)));
 
-      // Separar imágenes y videos
       const imagenes = urls.filter(url => !url.includes('.mp4') && !url.includes('video'));
       const videos = urls.filter(url => url.includes('.mp4') || url.includes('video'));
 
@@ -55,7 +54,7 @@ const Catalogo = () => {
 
   useEffect(() => {
     fetchAutos();
-    const interval = setInterval(fetchAutos, 60000); // refrescar cada 1 minuto
+    const interval = setInterval(fetchAutos, 60000);
     return () => clearInterval(interval);
   }, []);
 
@@ -87,6 +86,15 @@ const Catalogo = () => {
     document.body.classList.remove("modal-abierto");
   };
 
+  const renderStockBadge = (stock) => {
+    const enStock = stock?.toLowerCase().trim() === 'en stock';
+    return (
+      <span className={`badge-stock ${enStock ? 'en-stock' : 'sin-stock'}`}>
+        {enStock ? 'En Stock' : 'Sin Stock'}
+      </span>
+    );
+  };
+
   if (!autoDetalle) {
     return (
       <section className="catalogo" id="catalogo">
@@ -101,7 +109,7 @@ const Catalogo = () => {
                 className="auto-img"
               />
               <div className="auto-info">
-                <h3>{auto.Marca} {auto.Modelo}</h3>
+                <h3>{auto.Marca} {auto.Modelo} {renderStockBadge(auto.Stock)}</h3>
                 <p className="precio">{auto.Precio}</p>
                 <div className="auto-detalles">
                   <span><i className="fas fa-calendar-alt"></i> {auto.Año}</span>
@@ -153,7 +161,7 @@ const Catalogo = () => {
           <button className="modal-close" onClick={cerrarModal}>&times;</button>
           <div className="modal-body">
             <div className="col-galeria">
-              <h3 className="titulo-auto">{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año}</h3>
+              <h3 className="titulo-auto">{autoDetalle.Marca} {autoDetalle.Modelo} - {autoDetalle.Año} {renderStockBadge(autoDetalle.Stock)}</h3>
               <div className="galeria-deslizante">
                 <button className="btn-flecha izquierda" onClick={() => cambiarFoto(photoIndex - 1)}>
                   <i className="fas fa-chevron-left"></i>

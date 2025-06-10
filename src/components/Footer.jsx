@@ -26,15 +26,18 @@ export default function Footer() {
 
           <div className="footer-redes">
             <a href="https://wa.me/5491159456142" target="_blank" rel="noreferrer">
-              <i className="fab fa-whatsapp"></i>
+             <i className="fab fa-whatsapp"></i>
             </a>
             <a href="https://www.instagram.com/ms.motorsquilmes/" target="_blank" rel="noreferrer">
-              <i className="fab fa-instagram"></i>
+             <i className="fab fa-instagram"></i>
             </a>
             <a href="https://www.tiktok.com/@msmotorsquilmes" target="_blank" rel="noreferrer">
-              <i className="fab fa-tiktok"></i>
+             <i className="fab fa-tiktok"></i>
             </a>
-          </div>
+            <a href="https://www.youtube.com/@msmotorsquilmes" target="_blank" rel="noreferrer">
+             <i className="fab fa-youtube"></i>
+            </a>
+         </div>
         </div>
 
         {/* Sección derecha */}
