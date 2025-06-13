@@ -14,7 +14,7 @@ export default function Footer() {
               className="footer-logo"
             />
             <h3 className="footer-titulo">
-              MS.<span className="rojo">Motors</span>
+              MS<span className="rojo"> Motors</span>
             </h3>
           </div>
 

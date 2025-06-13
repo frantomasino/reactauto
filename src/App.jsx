@@ -13,12 +13,12 @@ function App() {
             <img src="/logo-ms-motors.jpg" alt="Logo Empresa" />
           </a>
           <h1>
-            MS.<span className="rojo">Motors</span>
+            MS<span className="rojo"> Motors</span>
           </h1>
         </div>
 
         <p className="mensaje-centralizado">
-          Compra segura, financiación personalizada y atención premium
+          Compra, venta, búsqueda y consignaciones de autos.
         </p>
 
         <div className="espacio-vacio"></div>

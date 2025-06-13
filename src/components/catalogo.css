@@ -476,24 +476,4 @@ margin-bottom: 10px;
 margin-bottom: 10px;
 padding-top: 0.5rem; /* espacio arriba */
 }
-
-.badge-stock {
-  display: inline-block;
-  padding: 3px 8px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 700;
-  margin-left: 8px;
-  vertical-align: middle;
-  user-select: none;
-}
-
-.en-stock {
-  background-color: #4caf50;
-  color: white;
-}
-
-.sin-stock {
-  background-color: #f44336;
-  color: white;
-}
+ 
